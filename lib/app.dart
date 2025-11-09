@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_13/module_11/class_2.dart';
 import 'package:flutter_13/module_11/class_3.dart';
+import 'package:flutter_13/module_12/calculator.dart';
 import 'package:flutter_13/module_12/class_1.dart';
 import 'package:flutter_13/module_12/class_2.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -87,7 +88,7 @@ class MyApp extends StatelessWidget {
         themeMode: ThemeMode.light,
         title: 'Batch-13',
         home: ThemeTest(),
-        initialRoute: 'LifeCycle',
+        initialRoute: 'Calculator',
         routes: {
           '/home': (context) => Home(),
           'btns': (context) => Buttongrp(),
@@ -102,6 +103,7 @@ class MyApp extends StatelessWidget {
           'Todo': (context) => Todo(),
           'StateClass':(context) => StateClass(),
           'LifeCycle':(context) => LifeCycle(),
+          'Calculator':(context) => Calculator(),
         },
       );
 
