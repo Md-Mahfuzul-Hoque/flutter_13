@@ -4,6 +4,7 @@ import 'package:flutter_13/module_11/class_3.dart';
 import 'package:flutter_13/module_12/calculator.dart';
 import 'package:flutter_13/module_12/class_1.dart';
 import 'package:flutter_13/module_12/class_2.dart';
+import 'package:flutter_13/module_13/CRUD/crud.dart';
 import 'package:flutter_13/module_13/class_2.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_13/module_7/class3_button.dart';
@@ -89,7 +90,7 @@ class MyApp extends StatelessWidget {
         themeMode: ThemeMode.light,
         title: 'Batch-13',
         home: ThemeTest(),
-        initialRoute: 'APICall',
+        initialRoute: 'CRUD',
         routes: {
           '/home': (context) => Home(),
           'btns': (context) => Buttongrp(),
@@ -106,6 +107,7 @@ class MyApp extends StatelessWidget {
           'LifeCycle':(context) => LifeCycle(),
           'Calculator':(context) => Calculator(),
           'APICall':(context) => APICall(),
+          'CRUD':(context) => CRUD(),
         },
       );
 
