@@ -1,9 +1,7 @@
 class ProductModel {
   String? status;
   List<Data>? data;
-
   ProductModel({this.status, this.data});
-
   ProductModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     if (json['data'] != null) {
@@ -33,14 +31,15 @@ class Data {
   int? unitPrice;
   int? totalPrice;
 
-  Data(
-      {this.sId,
-        this.productName,
-        this.productCode,
-        this.img,
-        this.qty,
-        this.unitPrice,
-        this.totalPrice});
+  Data({
+    this.sId,
+    this.productName,
+    this.productCode,
+    this.img,
+    this.qty,
+    this.unitPrice,
+    this.totalPrice,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];

@@ -6,14 +6,12 @@ import 'package:http/http.dart' as http;
 
 class CRUD extends StatefulWidget {
   const CRUD({super.key});
-
   @override
   State<CRUD> createState() => _CRUDState();
 }
 
 class _CRUDState extends State<CRUD> {
   ProductController productController = ProductController();
-
   @override
   void initState() {
     // TODO: implement initState
@@ -33,6 +31,7 @@ class _CRUDState extends State<CRUD> {
     TextEditingController productQTYController = TextEditingController();
     TextEditingController productUnitPriceController = TextEditingController();
     TextEditingController productTotalPriceController = TextEditingController();
+
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -45,32 +44,32 @@ class _CRUDState extends State<CRUD> {
                 controller: productNameController,
                 decoration: InputDecoration(labelText: 'Name'),
               ),
-              SizedBox(height: 10),
 
+              SizedBox(height: 10),
               TextField(
                 controller: productIMGController,
                 decoration: InputDecoration(labelText: 'Image'),
               ),
-              SizedBox(height: 10),
 
+              SizedBox(height: 10),
               TextField(
                 controller: productQTYController,
-                decoration: InputDecoration(labelText: 'QTU'),
+                decoration: InputDecoration(labelText: 'QTY'),
               ),
-              SizedBox(height: 10),
 
+              SizedBox(height: 10),
               TextField(
                 controller: productUnitPriceController,
                 decoration: InputDecoration(labelText: 'Unit Price'),
               ),
-              SizedBox(height: 10),
 
+              SizedBox(height: 10),
               TextField(
                 controller: productTotalPriceController,
                 decoration: InputDecoration(labelText: 'Total Price'),
               ),
-              SizedBox(height: 10),
 
+              SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -80,11 +79,9 @@ class _CRUDState extends State<CRUD> {
                     },
                     child: Text('Cancel'),
                   ),
-
                   ElevatedButton(
                     onPressed: () async {
-                      final isSuccess =
-                      await productController.createProduct(
+                      final isSuccess = await productController.createProduct(
                         Data(
                           productName: productNameController.text,
                           img: productIMGController.text,
@@ -95,8 +92,8 @@ class _CRUDState extends State<CRUD> {
                           ),
                         ),
                       );
-                       Navigator.pop(context);
-                       await fetchData();
+                      Navigator.pop(context);
+                      await fetchData();
                     },
                     child: Text('Save', style: TextStyle(color: Colors.white)),
                   ),
@@ -119,6 +116,7 @@ class _CRUDState extends State<CRUD> {
         ),
         centerTitle: true,
       ),
+
       body: productController.isLoading
           ? Center(child: CircularProgressIndicator())
           : GridView.builder(
@@ -127,6 +125,7 @@ class _CRUDState extends State<CRUD> {
                 crossAxisSpacing: 10,
                 childAspectRatio: 0.8,
               ),
+
               itemCount: productController.products.length,
               itemBuilder: (context, index) {
                 final item = productController.products[index];
@@ -138,6 +137,7 @@ class _CRUDState extends State<CRUD> {
                           height: 140,
                           child: Image.network(item.img.toString()),
                         ),
+
                         Text(
                           item.productName.toString(),
                           style: TextStyle(
@@ -145,10 +145,11 @@ class _CRUDState extends State<CRUD> {
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
                           ),
+
                           overflow: TextOverflow.ellipsis,
                         ),
-                        Text('Price: \$${item.unitPrice} | QTY: ${item.qty}'),
 
+                        Text('Price: \$${item.unitPrice} | QTY: ${item.qty}'),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -156,8 +157,10 @@ class _CRUDState extends State<CRUD> {
                               onPressed: () {
                                 productDialog();
                               },
+
                               icon: Icon(Icons.edit, color: Colors.teal),
                             ),
+
                             IconButton(
                               onPressed: () async {
                                 await productController
@@ -185,6 +188,7 @@ class _CRUDState extends State<CRUD> {
                                       }
                                     });
                               },
+
                               icon: Icon(Icons.delete, color: Colors.red),
                             ),
                           ],
@@ -195,10 +199,12 @@ class _CRUDState extends State<CRUD> {
                 );
               },
             ),
+
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           productDialog();
         },
+
         child: Icon(Icons.add),
       ),
     );
