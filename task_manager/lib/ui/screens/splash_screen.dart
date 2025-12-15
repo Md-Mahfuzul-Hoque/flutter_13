@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../utils/asset_paths.dart';
+import '../widgets/screen_background.dart';
 import 'iogin_page.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -11,7 +13,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     // TODO: implement initState
@@ -21,27 +22,20 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> _moveToNextScreen() async {
     await Future.delayed(Duration(seconds: 2));
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginPage()));
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => LoginPage()));
   }
-
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          SvgPicture.asset(AssetPath.backgroundSVG,
-          width: double.maxFinite,
-            height: double.maxFinite,
+      body: ScreenBackground(
+        child: Center(
+          child: SvgPicture.asset(
+            AssetPath.logoSVG,
+            height: 50,
           ),
-          Center(
-              child:
-              SvgPicture.asset(AssetPath.logoSVG,
-              height: 50,
-              )
-          )
-        ],
+        ),
       ),
     );
   }
