@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import '../screens/update_profile_screen.dart';
 class TMAppBar extends StatelessWidget implements PreferredSizeWidget {
   const TMAppBar({
     super.key,
@@ -8,27 +10,34 @@ class TMAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.green,
-      title: Row(
-        children: [
-          CircleAvatar(),
-          SizedBox(width: 8,),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Md Mahfuzul Hoque',
-                style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    color: Colors.white
+      title: InkWell(
+        onTap: (){
+          Navigator.push(context,
+              MaterialPageRoute(
+                  builder: (context)=>UpdateProfileScreen()));
+        },
+        child: Row(
+          children: [
+            CircleAvatar(),
+            SizedBox(width: 8,),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Md Mahfuzul Hoque',
+                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                      color: Colors.white
+                  ),
                 ),
-              ),
-
-              Text('mdmahfuzulhoque1997@gmail.com',
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: Colors.white
-                ),
-              )
-            ],
-          )
-        ],
+        
+                Text('mdmahfuzulhoque1997@gmail.com',
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: Colors.white
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
       ),
       actions: [
         IconButton(onPressed: (){},

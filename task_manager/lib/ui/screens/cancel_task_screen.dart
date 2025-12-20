@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:task_manager/ui/widgets/task_card.dart';
 import 'package:task_manager/ui/widgets/tm_app_bar.dart';
 
-class CompletedTaskScreen extends StatefulWidget {
-  const CompletedTaskScreen({super.key});
+import '../widgets/task_card.dart';
+
+class CancelTaskScreen extends StatefulWidget {
+  const CancelTaskScreen({super.key});
 
   @override
-  State<CompletedTaskScreen> createState() => _CompletedTaskScreenState();
+  State<CancelTaskScreen> createState() => _CancelTaskScreenState();
 }
 
-class _CompletedTaskScreenState extends State<CompletedTaskScreen> {
+class _CancelTaskScreenState extends State<CancelTaskScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +21,7 @@ class _CompletedTaskScreenState extends State<CompletedTaskScreen> {
         child: ListView.separated(
 
             itemBuilder: (context, index){
-              return TaskCard(status: 'Completed', cardColor: Colors.green,);
+              return TaskCard(status: 'Cancelled', cardColor: Colors.red,);
             },
             separatorBuilder: (context, index){
               return SizedBox(
