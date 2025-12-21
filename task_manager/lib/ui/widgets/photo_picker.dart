@@ -23,11 +23,6 @@ class photo_picker extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              child: Text('Photo',
-                style:TextStyle(
-                  color: Colors.white,
-                ),
-              ),
               alignment: Alignment.center,
               width: 80,
               height: 50,
@@ -36,6 +31,11 @@ class photo_picker extends StatelessWidget {
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(10),
                   bottomLeft: Radius.circular(10),
+                ),
+              ),
+              child: Text('Photo',
+                style:TextStyle(
+                  color: Colors.white,
                 ),
               ),
             ),
