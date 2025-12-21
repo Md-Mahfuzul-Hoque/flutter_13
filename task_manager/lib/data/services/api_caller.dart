@@ -88,10 +88,6 @@ class ApiCaller {
   }
 }
 
-// API response
-//     -> body
-//     -> code
-
 class ApiResponse {
   final int responseCode;
   final dynamic responseData;
@@ -104,3 +100,7 @@ class ApiResponse {
       required this.responseData,
       this.errorMessage = 'Something Wrong'});
 }
+
+// API response
+//     -> body
+//     -> code
