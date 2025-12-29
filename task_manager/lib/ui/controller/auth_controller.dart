@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../data/model/user_model.dart';
+import '../../data/models/user_model.dart';
 
 class AuthController {
   static String _accessTokenKey = 'token';
@@ -30,4 +30,17 @@ class AuthController {
       userModel = UserModel.fromJson(jsonDecode(userData!));
     }
   }
+
+  static Future<bool> isUserLoggedIn()async{
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    String ? token = sharedPreferences.getString(_accessTokenKey);
+    return token != null;
+  }
+
+  static Future<void>clearUserData() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    await sharedPreferences.clear();
+  }
+
+
 }

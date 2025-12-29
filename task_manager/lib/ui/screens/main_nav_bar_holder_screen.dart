@@ -14,13 +14,12 @@ class MainNavBarHolderScreen extends StatefulWidget {
 class _MainNavBarHolderScreenState extends State<MainNavBarHolderScreen> {
   int _selectedIndex = 0;
 
-  List<Widget> _screens =[
+  List<Widget> _screens = [
     NewTaskScreen(),
+    ProgressTaskScreens(),
     CompletedTaskScreen(),
     CancelTaskScreen(),
-    ProgressTaskScreens(),
   ];
-
 
   @override
   Widget build(BuildContext context) {
@@ -28,20 +27,17 @@ class _MainNavBarHolderScreenState extends State<MainNavBarHolderScreen> {
       body: _screens[_selectedIndex],
       bottomNavigationBar: NavigationBar(
           selectedIndex: _selectedIndex,
-          onDestinationSelected: (int index){
+          onDestinationSelected: (int index) {
             _selectedIndex = index;
-            setState(() {
-
-            });
+            setState(() {});
           },
-
           destinations: [
-        NavigationDestination(icon: Icon(Icons.refresh), label: 'New Task'),
-        NavigationDestination(icon: Icon(Icons.done_all), label: 'Completed'),
-        NavigationDestination(icon: Icon(Icons.close), label: 'Cancelled'),
-        NavigationDestination(icon: Icon(Icons.refresh), label: 'Progress'),
-      ]),
+            NavigationDestination(icon: Icon(Icons.refresh), label: 'New Task'),
+            NavigationDestination(icon: Icon(Icons.refresh), label: 'Progress'),
+            NavigationDestination(
+                icon: Icon(Icons.done_all), label: 'Completed'),
+            NavigationDestination(icon: Icon(Icons.close), label: 'Cancelled'),
+          ]),
     );
   }
 }
-

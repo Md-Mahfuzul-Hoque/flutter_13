@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:task_manager/ui/screens/sign_up_screen.dart';
 import 'package:task_manager/ui/widgets/screen_background.dart';
 
-import '../../data/model/user_model.dart';
+import '../../data/models/user_model.dart';
 import '../../data/services/api_caller.dart';
 import '../../data/utils/urls.dart';
 import 'forget_password_email_verify.dart';
