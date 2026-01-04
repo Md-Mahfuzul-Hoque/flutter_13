@@ -55,7 +55,7 @@ class _CancelTaskScreenState extends State<CancelTaskScreen> {
         padding: const EdgeInsets.symmetric(
             horizontal: 10.0),
         child: Visibility(
-          visible: _getcancelledTaskProgress = false,
+          visible: _getcancelledTaskProgress == false,
           replacement: Center(
               child: CircularProgressIndicator()),
           child: ListView.separated(

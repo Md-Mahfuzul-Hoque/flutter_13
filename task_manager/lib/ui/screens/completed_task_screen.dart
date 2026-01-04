@@ -43,7 +43,9 @@ class _CompletedTaskScreenState extends State<CompletedTaskScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _getAllTask();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _getAllTask();
+    });
   }
 
   @override
@@ -54,7 +56,7 @@ class _CompletedTaskScreenState extends State<CompletedTaskScreen> {
         padding: const EdgeInsets.symmetric(
             horizontal: 10.0),
         child: Visibility(
-          visible: _isloading = false,
+          visible: _isloading == false,
           replacement: Center(
               child: CircularProgressIndicator()),
           child: ListView.separated(

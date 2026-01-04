@@ -54,7 +54,7 @@ class _ProgressTaskScreensState extends State<ProgressTaskScreens> {
         padding: const EdgeInsets.symmetric(
             horizontal: 10.0),
         child: Visibility(
-          visible: _getprogressTaskProgress = false,
+          visible: _getprogressTaskProgress == false,
           replacement: Center(
               child: CircularProgressIndicator()),
           child: ListView.separated(
