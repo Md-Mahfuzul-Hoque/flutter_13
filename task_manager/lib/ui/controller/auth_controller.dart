@@ -8,8 +8,8 @@ class AuthController {
   static String _accessTokenKey = 'token';
   static String _userModelKey = 'user-data';
 
-  static String? accessToken;
-  static UserModel? userModel;
+  static String ? accessToken;
+  static UserModel ? userModel;
 
   static Future saveUserData(UserModel model, String token) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -21,6 +21,7 @@ class AuthController {
     accessToken = token;
     userModel = model;
   }
+
   static Future getUserData()async{
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String ? token = sharedPreferences.getString(_accessTokenKey);
@@ -36,7 +37,6 @@ class AuthController {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     await sharedPreferences.setString(_userModelKey, jsonEncode(model.toJson()));
   }
-
 
   static Future<bool> isUserLoggedIn()async{
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();

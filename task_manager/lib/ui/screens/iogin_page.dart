@@ -1,11 +1,14 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:task_manager/provider/network_provider.dart';
 import 'package:task_manager/ui/screens/sign_up_screen.dart';
 import 'package:task_manager/ui/widgets/screen_background.dart';
 
 import '../../data/models/user_model.dart';
 import '../../data/services/api_caller.dart';
 import '../../data/utils/urls.dart';
+import '../../provider/auth_provider.dart';
 import 'forget_password_email_verify.dart';
 import 'main_nav_bar_holder_screen.dart';
 
@@ -152,27 +155,13 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future<void> _signIn() async {
-    setState(() {
-      _signInProgress = true;
-    });
-    Map<String, dynamic> requestBody = {
-      "email": _emailController.text,
-      "password": _passwordController.text,
-    };
+    final networkProvider = Provider.of<NetworkProvider>(context,listen: false);
+    final authProvider = Provider.of<AuthProvider>(context,listen: false);
 
-    final ApiResponse response = await ApiCaller.postRequest(
-      url: Urls.loginUrl,
-      body: requestBody,
-    );
-    setState(() {
-      _signInProgress = false;
-    });
+    final result = await networkProvider.login(email: _emailController.text.trim(), password: _passwordController.text);
 
-    if (response.isSuccess) {
-      UserModel model = UserModel.fromJson(response.responseData['data']);
-      String accessToken = response.responseData['token'];
-      await AuthController.saveUserData(model, accessToken);
-
+    if(result != null){
+      await authProvider.saveUserData(result['user'], result['token']);
       _clearTextField();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -186,7 +175,7 @@ class _LoginPageState extends State<LoginPage> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(response.responseData['data']),
+          content: Text(networkProvider.errorMessage ?? 'Something Wrong'),
           backgroundColor: Colors.red,
           duration: Duration(seconds: 2),
         ),
